@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨凯亮 | 个人主页</title>
+    <style>
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ===== Navigation ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0 24px;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            padding: 120px 24px 80px;
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-light);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .hero-tags span {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .hero-contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .hero-contact a,
+        .hero-contact span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .hero-contact a:hover {
+            color: var(--primary);
+        }
+
+        .hero-contact svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ===== Section Common ===== */
+        section {
+            padding: 64px 24px;
+        }
+
+        .section-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 36px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 3px;
+            background: var(--primary);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== About / Education ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .about-card h3 .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .about-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-card .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ===== Skills ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            line-height: 1.6;
+        }
+
+        .skill-card li::before {
+            content: '▸ ';
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ===== Awards ===== */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .award-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .award-badge {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 20px;
+        }
+
+        .award-info h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .award-info .award-level {
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .award-info .award-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .award-info .award-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* ===== Projects ===== */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .project-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== Contact ===== */
+        #contact {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .contact-item {
+            padding: 20px;
+        }
+
+        .contact-item .icon-wrap {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+
+        .contact-item h4 {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .contact-item a, .contact-item span {
+            font-size: 14px;
+            color: var(--text);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            text-align: center;
+            padding: 32px 24px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 30px; }
+            .hero .subtitle { font-size: 16px; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 13px; }
+            .section-title { font-size: 22px; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links { display: none; }
+            .hero-avatar { width: 110px; height: 110px; }
+            .hero h1 { font-size: 26px; }
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .delay-4 { animation-delay: 0.4s; opacity: 0; }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">Kailiang Yang</a>
+        <ul class="nav-links">
+            <li><a href="#about">关于我</a></li>
+            <li><a href="#skills">技能</a></li>
+            <li><a href="#awards">获奖</a></li>
+            <li><a href="#projects">项目</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-inner">
+        <img src="assets/avatar.jpeg" alt="杨凯亮" class="hero-avatar fade-in-up">
+        <h1 class="fade-in-up delay-1">杨凯亮</h1>
+        <p class="subtitle fade-in-up delay-1">华东师范大学 · 软件工程学院 · 中共预备党员</p>
+        <div class="hero-tags fade-in-up delay-2">
+            <span>C++ 后端</span>
+            <span>数据分析</span>
+            <span>机器学习</span>
+            <span>大数据</span>
+        </div>
+        <div class="hero-contact fade-in-up delay-3">
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                182-5818-0226
+            </span>
+            <a href="mailto:yangkailiang12@163.com">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+                yangkailiang12@163.com
+            </a>
+            <a href="https://github.com/Yangkailiang1" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
+                GitHub
+            </a>
+            <a href="https://blog.csdn.net/weixin_62684026" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                技术博客
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="section-inner">
+        <h2 class="section-title">关于我</h2>
+        <div class="about-grid">
+            <div class="about-card fade-in-up">
+                <h3>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                    教育背景
+                </h3>
+                <p>
+                    <strong>华东师范大学</strong> · 软件工程学院<br>
+                    软件工程专业<br>
+                    <span class="highlight">绩点 4.35 / 5.0</span> · 专业排名 <span class="highlight">3 / 79</span><br>
+                    考研分数：<span class="highlight">380分</span>（初试第8/126，复试总排名第11/126）
+                </p>
+            </div>
+            <div class="about-card fade-in-up delay-1">
+                <h3>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    基本信息
+                </h3>
+                <p>
+                    性别：男<br>
+                    政治面貌：<span class="highlight">中共党员</span><br>
+                    英语水平：CET-6 <span class="highlight">556分</span><br>
+                    求职意向：C++后端实习生 / 数据分析实习生<br>
+                    研究方向：Agent开发 & 问题框架方法
+                </p>
+            </div>
+            <div class="about-card fade-in-up delay-2">
+                <h3>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    其他信息
+                </h3>
+                <p>
+                    有较好的英文阅读和表达能力<br>
+                    注重团队协作，有项目协调经验<br>
+                    持续学习新技术，关注业界动态<br>
+                    热爱编程，对技术有极强的好奇心和热情
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" style="background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-inner">
+        <h2 class="section-title">专业技能</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>编程语言 / 数据结构 / 数据库</h3>
+                <ul>
+                    <li>熟悉 C/C++ 基本语法，了解面向对象思想及封装、继承、多态、模板编程</li>
+                    <li>熟悉常用 STL 容器使用，了解底层原理及空间配置器</li>
+                    <li>熟悉基本数据结构、排序算法、常见搜索结构</li>
+                    <li>熟悉 MySQL 增删查改、索引、事务机制</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>操作系统 / Linux 系统编程</h3>
+                <ul>
+                    <li>熟悉 Linux 常用命令及 vim、gcc、gdb、git、makefile 等工具</li>
+                    <li>熟悉 Linux 多进程、多线程编程，进程同步与互斥</li>
+                    <li>熟悉 Linux 进程通信机制：管道、消息队列、信号量、共享内存</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>计算机网络 / Linux 网络编程</h3>
+                <ul>
+                    <li>熟悉 TCP/IP 协议栈和数据封装与分用</li>
+                    <li>熟悉 TCP、UDP、HTTP 等常见网络通信协议</li>
+                    <li>熟悉 Linux 下 Socket 编程</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>机器学习算法</h3>
+                <ul>
+                    <li>线性回归、逻辑回归、K-Means、KNN、决策树、SVM</li>
+                    <li>随机森林、AdaBoost、GBDT、XGBoost</li>
+                    <li>超参数优化（网格搜索、贝叶斯优化）及数据清洗与特征衍生</li>
+                    <li>深度学习：ResNet、DenseNet、Vision Transformer 等图像识别网络</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>大数据组件</h3>
+                <ul>
+                    <li>搭建过单机 Hadoop 环境，使用 HDFS、MapReduce、HBase、Hive</li>
+                    <li>Sqoop、Flume、Spark、Spark Streaming、Spark SQL、Kafka、Spark MLlib、Flink</li>
+                    <li>了解各组件的基本工作原理</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Awards -->
+<section id="awards">
+    <div class="section-inner">
+        <h2 class="section-title">荣誉与奖项</h2>
+        <div class="awards-grid">
+            <div class="award-card">
+                <div class="award-badge">🏅</div>
+                <div class="award-info">
+                    <h4>美国大学生数学建模竞赛</h4>
+                    <p class="award-level">国家级 · M奖（国际一等奖）</p>
+                    <p class="award-desc">2023年 Y赛题 · 担任建模任务</p>
+                    <p class="award-date">2023.06</p>
+                </div>
+            </div>
+            <div class="award-card">
+                <div class="award-badge">🏆</div>
+                <div class="award-info">
+                    <h4>第五届"泰迪杯"数据分析技能赛</h4>
+                    <p class="award-level">国家级 · B赛题一等奖</p>
+                    <p class="award-desc">担任建模任务</p>
+                    <p class="award-date">2022.12</p>
+                </div>
+            </div>
+            <div class="award-card">
+                <div class="award-badge">🥉</div>
+                <div class="award-info">
+                    <h4>第五届"泰迪杯"数据分析技能赛</h4>
+                    <p class="award-level">国家级 · A赛题三等奖</p>
+                    <p class="award-desc">担任建模任务</p>
+                    <p class="award-date">2022.12</p>
+                </div>
+            </div>
+            <div class="award-card">
+                <div class="award-badge">🥈</div>
+                <div class="award-info">
+                    <h4>蓝桥杯 C++ 组</h4>
+                    <p class="award-level">省级 · 浙江省省赛二等奖</p>
+                    <p class="award-desc">个人参赛</p>
+                    <p class="award-date">2023.04</p>
+                </div>
+            </div>
+            <div class="award-card">
+                <div class="award-badge">📚</div>
+                <div class="award-info">
+                    <h4>学习单项奖奖学金</h4>
+                    <p class="award-level">学院级</p>
+                    <p class="award-date">2021/2022</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" style="background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-inner">
+        <h2 class="section-title">项目经历</h2>
+        <div class="projects-list">
+            <div class="project-card">
+                <h3>基于 UPPAAL 的时间自动机检验</h3>
+                <p>使用基于 UPPAAL 的时间自动机检测，用形式化验证的形式证明 DSL 的冲突检测，保证领域特定语言规则的一致性。</p>
+            </div>
+            <div class="project-card">
+                <h3>分布式数据日志收集平台</h3>
+                <p>模拟生成电商平台的购买日志，使用 Flume 对日志进行收集。收集的日志一方面存入 HDFS 持久化存储，一方面传给 Kafka 消息队列。Kafka 收到的日志传给 Spark Streaming 进行实时流处理，处理结果最终存入 MySQL 数据库，形成完整的数据采集-传输-处理-存储链路。</p>
+            </div>
+            <div class="project-card">
+                <h3>数据分析：金融时序分析 & 信贷风险</h3>
+                <p>参与 JPX 金融时序分析项目及 Home Credit（捷信）风险还贷预测项目，复现或达到了近乎冠军的水平，在特征工程、模型调优方面积累了丰富经验。</p>
+            </div>
+            <div class="project-card">
+                <h3>图像识别：癌症预测（Histopathologic Cancer Detection）</h3>
+                <p>使用 CycleGAN 将另一个数据集转换风格以扩充数据，采用多种数据增强手段，以 ResNet 为主要网络模型进行图像分类，在本地测试集上达到约 95% 的准确率。</p>
+            </div>
+            <div class="project-card">
+                <h3>医疗文献检索系统</h3>
+                <p>与三位小伙伴协作完成。将用户上传的医疗文献中的文字和图像保存到数据库中，使用 Elasticsearch 搜索引擎实现全文检索。负责使用 Django 搭建平台、网页页面设计、数据库存取以及团队协调工作。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="section-inner">
+        <h2 class="section-title">联系方式</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="icon-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+                </div>
+                <h4>邮箱</h4>
+                <a href="mailto:yangkailiang12@163.com">yangkailiang12@163.com</a>
+            </div>
+            <div class="contact-item">
+                <div class="icon-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+                <h4>电话</h4>
+                <span>182-5818-0226</span>
+            </div>
+            <div class="contact-item">
+                <div class="icon-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--primary)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
+                </div>
+                <h4>GitHub</h4>
+                <a href="https://github.com/Yangkailiang1" target="_blank">Yangkailiang1</a>
+            </div>
+            <div class="contact-item">
+                <div class="icon-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <h4>技术博客</h4>
+                <a href="https://blog.csdn.net/weixin_62684026" target="_blank">CSDN Blog</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 杨凯亮 (Kailiang Yang). All rights reserved.</p>
+</footer>
+
+</body>
+</html>
