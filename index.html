@@ -125,6 +125,8 @@
         .project-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
         .project-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
         .project-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+        .project-card .project-link { display: inline-block; margin-top: 12px; font-size: 13px; color: var(--primary); font-weight: 600; text-decoration: none; }
+        .project-card .project-link:hover { text-decoration: underline; }
 
         /* ===== Contact ===== */
         #contact { background: var(--card-bg); border-top: 1px solid var(--border); }
@@ -433,6 +435,15 @@
         <h2 class="section-title" data-i18n="proj_title">项目经历</h2>
         <div class="projects-list">
             <div class="project-card">
+                <h3 data-i18n="proj_fall_title">多模态老年人跌倒检测与照护平台</h3>
+                <p data-i18n="proj_fall_desc">融合视觉世界表征、人体姿态时序与可靠性门控音频，提供跌倒风险检测和告警。配套监控 Web、家属微信小程序及算法迭代平台，串联事件归档、语音问询与脱敏分析。固定 7 源测试集 F1 为 82.23%。</p>
+                <a class="project-link" href="https://github.com/Yangkailiang1/falling_detection" target="_blank" rel="noopener noreferrer" data-i18n="proj_source_link">查看 GitHub 项目</a>
+            </div>
+            <div class="project-card">
+                <h3 data-i18n="proj_companion_title">DreamerV3 3D AI Companion（开发中）</h3>
+                <p data-i18n="proj_companion_desc">基于 Godot 体素世界构建强化学习智能体环境，包含独立第一人称传感器、可交互动作与持久状态，并通过 Python 通信接口和 DreamerV3 环境适配器连接训练流程。</p>
+            </div>
+            <div class="project-card">
                 <h3 data-i18n="proj_uppaal_title">基于 UPPAAL 的时间自动机检验</h3>
                 <p data-i18n="proj_uppaal_desc">使用基于 UPPAAL 的时间自动机检测，用形式化验证的形式证明 DSL 的冲突检测，保证领域特定语言规则的一致性。</p>
             </div>
@@ -518,7 +529,7 @@ const i18n = {
     about_gender: '性别：男',
     about_party: '政治面貌：', about_party_val: '中共党员',
     about_english: '英语水平：CET-6 ',
-    about_job: '求职意向：C++后端实习生 / 数据分析实习生',
+    about_job: '求职方向：AI / Agent 工程与智能体应用开发',
     about_research: '研究方向：Agent开发 & 问题框架方法',
     about_other: '其他信息',
     about_other1: '有较好的英文阅读和表达能力',
@@ -573,6 +584,11 @@ const i18n = {
     award_scholar_level: '学院级',
     cert_view: '查看奖状',
     proj_title: '项目经历',
+    proj_fall_title: '多模态老年人跌倒检测与照护平台',
+    proj_fall_desc: '融合视觉世界表征、人体姿态时序与可靠性门控音频，提供跌倒风险检测和告警。配套监控 Web、家属微信小程序及算法迭代平台，串联事件归档、语音问询与脱敏分析。固定 7 源测试集 F1 为 82.23%。',
+    proj_source_link: '查看 GitHub 项目',
+    proj_companion_title: 'DreamerV3 3D AI Companion（开发中）',
+    proj_companion_desc: '基于 Godot 体素世界构建强化学习智能体环境，包含独立第一人称传感器、可交互动作与持久状态，并通过 Python 通信接口和 DreamerV3 环境适配器连接训练流程。',
     proj_uppaal_title: '基于 UPPAAL 的时间自动机检验',
     proj_uppaal_desc: '使用基于 UPPAAL 的时间自动机检测，用形式化验证的形式证明 DSL 的冲突检测，保证领域特定语言规则的一致性。',
     proj_log_title: '分布式数据日志收集平台',
@@ -606,7 +622,7 @@ const i18n = {
     about_gender: 'Gender: Male',
     about_party: 'Political Status: ', about_party_val: 'CPC Member',
     about_english: 'English: CET-6 ',
-    about_job: 'Seeking: C++ Backend Intern / Data Analyst Intern',
+    about_job: 'Seeking: AI / Agent Engineering',
     about_research: 'Research: Agent Development & Problem Frames',
     about_other: 'Additional',
     about_other1: 'Strong English reading and communication skills',
@@ -661,6 +677,11 @@ const i18n = {
     award_scholar_level: 'School-level',
     cert_view: 'View Certificate',
     proj_title: 'Projects',
+    proj_fall_title: 'Multimodal Fall Detection and Care Platform',
+    proj_fall_desc: 'Combines visual world representations, pose sequences, and reliability-gated audio for fall detection and alerts. Includes a monitoring web app, a family WeChat mini program, and an anonymized analytics pipeline. F1 was 82.23% on a fixed seven-source test set.',
+    proj_source_link: 'View GitHub project',
+    proj_companion_title: 'DreamerV3 3D AI Companion (In Development)',
+    proj_companion_desc: 'A Godot voxel-world environment for reinforcement-learning agents, with a first-person sensor, interactive actions, persistent state, and a Python interface connected to a DreamerV3 environment adapter.',
     proj_uppaal_title: 'UPPAAL-Based Timed Automata Verification',
     proj_uppaal_desc: 'Used UPPAAL for timed automata detection, formally verifying DSL conflict detection to ensure consistency of domain-specific language rules.',
     proj_log_title: 'Distributed Log Collection Platform',
